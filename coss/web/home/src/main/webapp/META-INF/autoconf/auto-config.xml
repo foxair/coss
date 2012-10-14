@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config description="自动配置：coss">
+	<group name="coss.basic">
+		<property name="coss.basic.domain" defaultValue="com.googlecode.coss" description="应用的域名" />
+		<property name="coss.basic.workdir" defaultValue="/home/admin" description="App 部署目录" />
+		<property name="coss.basic.output" defaultValue="${coss.basic.workdir}/output" description="App 输出产物目录" />
+		<property name="coss.basic.mode" defaultValue="dev" description="应用的部署状态（run, test, dev）" />
+	</group>
+
+	<group name="coss.deploy">
+		<property name="coss.basic.deploy" defaultValue="${coss.basic.workdir}/deploy" description="App 布署目录" />
+		<property name="coss.basic.logs" defaultValue="${coss.basic.output}/logs" description="App 日志输出目录" />
+	</group>
+
+	<group name="coss.db">
+		<property name="coss.biz.db.mysql.driver" defaultValue="com.alibaba.druid.proxy.DruidDriver" />
+		<property name="coss.biz.db.mysql.jdbcUrl" defaultValue="jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="coss.biz.db.mysql.name" defaultValue="root" />
+		<property name="coss.biz.db.mysql.password" defaultValue="myroot" />
+		<property name="coss.biz.db.pool.initialPoolSize" defaultValue="10" />
+		<property name="coss.biz.db.pool.minPoolSize" defaultValue="10" />
+		<property name="coss.biz.db.pool.maxPoolSize" defaultValue="50" />
+		<property name="coss.biz.db.pool.checkoutTimeout" defaultValue="5000" />
+		<property name="coss.biz.db.pool.maxIdleTime" defaultValue="1800" />
+		<property name="coss.biz.db.pool.maxActiveTime" defaultValue="30000" />
+		<property name="coss.biz.db.pool.idleConnectionTestPeriod" defaultValue="3000" />
+		<property name="coss.biz.db.pool.acquireIncrement" defaultValue="5" />
+	</group>
+
+	<group name="coss.web.home">
+		<property name="coss.web.home" defaultValue="${coss.basic.workdir}/web/home" description="App web home 主目录" />
+		<property name="coss.web.home.templates" defaultValue="${coss.web.home}/templates" description="App web home 模板目录" />
+	</group>
+
+	<script>
+		<generate template="env.properties.vm" destfile="env.properties" charset="UTF-8" />
+		<generate template="log4j.xml.vm" destfile="WEB-INF/log4j.xml" charset="UTF-8" />
+		<generate template="web.xml.vm" destfile="WEB-INF/web.xml" charset="UTF-8" />
+	</script>
+</config>

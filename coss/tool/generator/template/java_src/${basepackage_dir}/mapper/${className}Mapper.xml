@@ -1,0 +1,144 @@
+<#include "/macro.include"/>
+<#assign className = table.className>
+<#assign classNameFirstLower = table.classNameFirstLower>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<#macro mapperEl value>${r"#{"}${value}${r"}"}</#macro>
+<#macro namespace>${classNameFirstLower}.</#macro>
+
+<mapper namespace="${classNameFirstLower}">
+
+	<#--<typeAlias alias="${className}" type="${basepackage}.po.${className}" />-->
+
+	<resultMap id="${className}_RM" type="${className}">
+    <#list table.columns as column>
+        <result property="${column.columnNameLower}" column="${column.sqlName}"/>
+	</#list>
+	</resultMap>
+	
+	<sql id="<@namespace/>columns">
+	    <![CDATA[
+	    <#list table.columns as column>	${column.sqlName}<#if column_has_next>,</#if></#list>
+	    ]]>
+	</sql>
+	
+	<sql id="<@namespace/>queryCondition">
+	<#list table.columns as column>
+		<if test="${column.columnNameLower} != null">
+			<![CDATA[ AND ${column.sqlName} = <@mapperEl column.columnNameLower/> ]]>
+		</if>
+	</#list>
+	</sql>
+
+	<insert id="<@namespace/>insert" parameterType="${className}">
+    <![CDATA[
+        INSERT INTO ${table.sqlName} (
+        <#list table.columns as column>
+        	${column.sqlName} <#if column_has_next>,</#if>
+        </#list>
+        ) VALUES (
+        <#list table.columns as column>
+        	<@mapperEl column.columnNameFirstLower/> <#if column_has_next>,</#if>
+        </#list>
+        )
+    ]]>
+    <selectKey keyProperty="id" resultType="java.lang.Long">  
+        SELECT @@IDENTITY AS ID
+    </selectKey>
+	</insert>
+    
+	<update id="<@namespace/>update" parameterType="${className}">
+    <![CDATA[
+        UPDATE ${table.sqlName} SET
+	        <#list table.notPkColumns as column>
+	        ${column.sqlName} = <@mapperEl column.columnNameFirstLower/> <#if column_has_next>,</#if>
+	        </#list>
+        WHERE 
+        	<#list table.compositeIdColumns as column>
+	        ${column.sqlName} = <@mapperEl column.columnNameLower/> <#if column_has_next>,</#if>
+	        </#list>	        
+    ]]>
+	</update>
+
+    <delete id="<@namespace/>deleteById">
+    <![CDATA[
+        DELETE FROM ${table.sqlName} WHERE
+        <#list table.compositeIdColumns as column>
+        ${column.sqlName} = <@mapperEl 'id'/> <#if column_has_next>,</#if>
+		</#list>
+    ]]>
+    </delete>
+    
+	<delete id="<@namespace/>deleteByIds" parameterType="list" >
+	<![CDATA[
+		DELETE FROM ${table.sqlName} where ID IN
+	]]>
+	<#noparse>
+	<if test="idList != null">
+	<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	</if>
+	</#noparse>
+	</delete>
+    
+    <select id="<@namespace/>getById" resultMap="${className}_RM">
+		SELECT <include refid="<@namespace/>columns" />
+	    <![CDATA[
+		    FROM ${table.sqlName} WHERE ID = <@mapperEl 'id'/>
+	    ]]>
+	</select>
+	
+	<select id="<@namespace/>findByIds" parameterType="list" resultMap="${className}_RM">
+		SELECT <include refid="<@namespace/>columns" />
+	    <![CDATA[
+		    FROM ${table.sqlName} WHERE ID IN
+	    ]]>
+	    <#noparse>
+	    <if test="idList != null">
+			<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		</#noparse>
+	</select>
+	
+	<select id="<@namespace/>getUnique" parameterType="${className}" resultMap="${className}_RM">
+		SELECT <include refid="<@namespace/>columns" />
+	    <![CDATA[
+		    FROM ${table.sqlName} WHERE ID = <@mapperEl 'id'/>
+	    ]]>
+	</select>
+		
+    <select id="<@namespace/>getCount" parameterType="map" resultType="int">
+        SELECT count(*) FROM ${table.sqlName} WHERE 1=1 
+		<include refid="<@namespace/>queryCondition"/>
+    </select>
+    
+    <select id="<@namespace/>queryPage" parameterType="map" resultMap="${className}_RM">
+	    SELECT <include refid="<@namespace/>columns" />
+		    FROM ${table.sqlName} WHERE 1=1
+			<include refid="<@namespace/>queryCondition"/>
+		ORDER BY ID desc
+    </select>
+	
+	<select id="<@namespace/>find" resultMap="${className}_RM">
+		SELECT <include refid="<@namespace/>columns" />
+	    <![CDATA[
+		    FROM ${table.sqlName} WHERE 1=1
+	    ]]>
+	    <include refid="<@namespace/>queryCondition"/>
+    	ORDER BY ID desc
+	</select>
+	
+	<#list table.columns as column>
+	<#if column.unique && !column.pk>
+	<select id="<@namespace/>getBy${column.columnName}" resultMap="${className}_RM" parameterType="${column.javaType}">
+		SELECT <include refid="<@namespace/>columns"/>
+		<![CDATA[
+		    FROM ${table.sqlName} where ${column.sqlName} = <@mapperEl column.columnNameLower/>
+		]]>
+	</select>
+	</#if>
+	</#list>
+</mapper>

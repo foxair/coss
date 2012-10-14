@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd"
+	default-lazy-init="true">
+
+	<description>Spring单元测试配置 </description>
+
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<!-- 数据源配置, 使用DBCP数据库连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${coss.biz.db.mysql.driver}" />
+		<property name="jdbcUrl" value="${coss.biz.db.mysql.jdbcUrl}" />
+		<property name="user" value="${coss.biz.db.mysql.username}"></property>
+		<property name="password" value="${coss.biz.db.mysql.password}"></property>
+		<property name="initialPoolSize" value="${coss.biz.db.pool.initialPoolSize}"></property>
+		<property name="minPoolSize" value="${coss.biz.db.pool.minPoolSize}"></property>
+		<property name="maxPoolSize" value="${coss.biz.db.pool.maxPoolSize}"></property>
+		<property name="checkoutTimeout" value="${coss.biz.db.pool.checkoutTimeout}"></property>
+		<property name="maxIdleTime" value="${coss.biz.db.pool.maxIdleTime}"></property>
+		<property name="idleConnectionTestPeriod" value="${coss.biz.db.pool.idleConnectionTestPeriod}"></property>
+		<property name="acquireIncrement" value="${coss.biz.db.pool.acquireIncrement}"></property>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="/META-INF/sqlmap/sqlmap-config.xml"></property>
+	</bean>
+
+	<!-- Jdbc Data Source Transaction manager -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<property name="rollbackOnCommitFailure" value="true"></property>
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+</beans>

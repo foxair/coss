@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+	<resultMap id="ProductRM" type="Product">
+		<result property="id" column="id" />
+		<result property="gmtCreate" column="gmt_create" />
+		<result property="productCode" column="product_code" />
+		<result property="productName" column="product_name" />
+		<result property="retailPrice" column="retail_price" />
+		<result property="skuDefinition" column="sku_definition" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<sql id="product.columns">
+	    <![CDATA[
+	    	id,	gmt_create,	product_code,	product_name,	retail_price,	sku_definition,	remark
+	    ]]>
+	</sql>
+
+	<sql id="product.queryCondition">
+		<if test="id != null">
+			<![CDATA[ AND id = #{id} ]]>
+		</if>
+		<if test="gmtCreate != null">
+			<![CDATA[ AND gmt_create = #{gmtCreate} ]]>
+		</if>
+		<if test="productCode != null">
+			<![CDATA[ AND product_code = #{productCode} ]]>
+		</if>
+		<if test="productName != null">
+			<![CDATA[ AND product_name = #{productName} ]]>
+		</if>
+		<if test="retailPrice != null">
+			<![CDATA[ AND retail_price = #{retailPrice} ]]>
+		</if>
+		<if test="skuDefinition != null">
+			<![CDATA[ AND sku_definition = #{skuDefinition} ]]>
+		</if>
+		<if test="remark != null">
+			<![CDATA[ AND remark = #{remark} ]]>
+		</if>
+	</sql>
+
+	<insert id="product.insert" parameterType="Product">
+    <![CDATA[
+        INSERT INTO pdm_product (
+        	id ,
+        	gmt_create ,
+        	product_code ,
+        	product_name ,
+        	retail_price ,
+        	sku_definition ,
+        	remark 
+        ) VALUES (
+        	#{id} ,
+        	#{gmtCreate} ,
+        	#{productCode} ,
+        	#{productName} ,
+        	#{retailPrice} ,
+        	#{skuDefinition} ,
+        	#{remark} 
+        )
+    ]]>
+		<selectKey keyProperty="id" resultType="java.lang.Long">
+			SELECT @@IDENTITY AS ID
+		</selectKey>
+	</insert>
+
+	<update id="product.update" parameterType="Product">
+    <![CDATA[
+        UPDATE pdm_product SET
+	        gmt_create = #{gmtCreate} ,
+	        product_code = #{productCode} ,
+	        product_name = #{productName} ,
+	        retail_price = #{retailPrice} ,
+	        sku_definition = #{skuDefinition} ,
+	        remark = #{remark} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+	<delete id="product.deleteById">
+    <![CDATA[
+        DELETE FROM pdm_product WHERE
+        id = #{id} 
+    ]]>
+	</delete>
+
+	<delete id="product.deleteByIds" parameterType="list">
+	<![CDATA[
+		DELETE FROM pdm_product where ID IN
+	]]>
+	<if test="idList != null">
+		<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</if>
+	</delete>
+
+	<select id="product.getById" resultMap="ProductRM">
+		SELECT
+		<include refid="product.columns" />
+	    <![CDATA[
+		    FROM pdm_product WHERE ID = #{id}
+	    ]]>
+	</select>
+
+	<select id="product.findByIds" parameterType="list" resultMap="ProductRM">
+		SELECT
+		<include refid="product.columns" />
+	    <![CDATA[
+		    FROM pdm_product WHERE ID IN
+	    ]]>
+		<if test="idList != null">
+			<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+
+	<select id="product.getUnique" parameterType="Product" resultMap="ProductRM">
+		SELECT
+		<include refid="product.columns" />
+	    <![CDATA[
+		    FROM pdm_product WHERE ID = #{id}
+	    ]]>
+	</select>
+
+	<select id="product.getCount" parameterType="map" resultType="int">
+		SELECT count(*) FROM pdm_product WHERE 1=1
+		<include refid="product.queryCondition" />
+	</select>
+
+	<select id="product.queryPage" parameterType="map" resultMap="ProductRM">
+		SELECT
+		<include refid="product.columns" />
+		FROM pdm_product WHERE 1=1
+		<include refid="product.queryCondition" />
+		ORDER BY ID desc
+	</select>
+
+	<select id="product.find" resultMap="ProductRM">
+		SELECT
+		<include refid="product.columns" />
+	    <![CDATA[
+		    FROM pdm_product WHERE 1=1
+	    ]]>
+		<include refid="product.queryCondition" />
+		ORDER BY ID desc
+	</select>
+
+</mapper>
