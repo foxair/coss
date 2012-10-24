@@ -4,4 +4,6 @@
 .classpath
 .metadata*
 /.metadata
+/output
+*.log
 RemoteSystemsTempFiles
