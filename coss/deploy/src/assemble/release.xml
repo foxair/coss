@@ -1,5 +1,5 @@
 <assembly>
-	<id>dev</id>
+	<id>release</id>
 	<formats>
 		<format>war</format>
 	</formats>
@@ -13,11 +13,11 @@
 	<dependencySets>
 		<dependencySet>
 			<includes>
-				<include>com.googlecode.coss:coss.web.home:war</include>
+				<include>com.googlecode.coss:coss.bundle.web:war</include>
 			</includes>
 			<useTransitiveDependencies>true</useTransitiveDependencies>
-			<outputFileNameMapping>coss.war</outputFileNameMapping>
-			<unpack>false</unpack>
+			<outputFileNameMapping>coss.web.war</outputFileNameMapping>
+			<unpack>true</unpack>
 		</dependencySet>
 	</dependencySets>
 </assembly>

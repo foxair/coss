@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.jtester.annotations.SpringApplicationContext;
 import org.jtester.annotations.SpringBeanByName;
+import org.junit.Test;
 
 import com.binq.biz.pdm.po.Product;
 import com.binq.biz.pdm.service.ProductService;
@@ -16,6 +17,7 @@ public class ProductServiceTest extends BaseJtesterCase {
     @SpringBeanByName
     private ProductService productService;
 
+    @Test
     //@DbFit(when = "wiki/storage/allot.wiki")
     public void testSaveProduct() {
         Product product = new Product();

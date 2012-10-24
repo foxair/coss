@@ -28,14 +28,15 @@
 		<property name="coss.biz.db.pool.acquireIncrement" defaultValue="5" />
 	</group>
 
-	<group name="coss.web.home">
-		<property name="coss.web.home" defaultValue="${coss.basic.workdir}/web/home" description="App web home 主目录" />
-		<property name="coss.web.home.templates" defaultValue="${coss.web.home}/templates" description="App web home 模板目录" />
+	<group name="coss.web">
+		<property name="coss.web.bundle" defaultValue="${coss.basic.workdir}/bundle/web" description="App web home 主目录" />
+		<property name="coss.web.templates" defaultValue="${coss.web.bundle}/src/main/webapp/WEB-INF/templates" description="App web home 模板目录" />
 	</group>
 
 	<script>
 		<generate template="env.properties.vm" destfile="env.properties" charset="UTF-8" />
 		<generate template="log4j.xml.vm" destfile="WEB-INF/log4j.xml" charset="UTF-8" />
 		<generate template="web.xml.vm" destfile="WEB-INF/web.xml" charset="UTF-8" />
+		<generate template="web-context.xml.vm" destfile="META-INF/spring/web-context.xml" charset="UTF-8" />
 	</script>
 </config>

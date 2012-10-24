@@ -16,7 +16,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.googlecode.coss</groupId>
-			<artifactId>coss.web.home</artifactId>
+			<artifactId>coss.bundle.web</artifactId>
 			<type>war</type>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
