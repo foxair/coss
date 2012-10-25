@@ -10,6 +10,7 @@
 
 	<artifactId>coss.bundle.web</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>project bundle web</name>
 
 	<dependencies>

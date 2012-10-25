@@ -21,7 +21,7 @@ public class ProductServiceTest extends BaseJtesterCase {
     //@DbFit(when = "wiki/storage/allot.wiki")
     public void testSaveProduct() {
         Product product = new Product();
-        product.setId(1004L);
+        product.setId(1005L);
         product.setGmtCreate(new Date());
         product.setProductCode("A0005");
         product.setProductName("Test Product");

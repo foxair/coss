@@ -1,14 +1,16 @@
 package com.googlecode.coss.web.home;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("indexController")
-//@RequestMapping("/")
+@Controller
 public class IndexController {
 
-    @RequestMapping
-    public void findPet() {
-        // implementation omitted
+    @RequestMapping("/index.htm")
+    public ModelMap get() {
+        ModelMap m = new ModelMap();
+        m.addAttribute("msg", "Access Success");
+        return m;
     }
 }

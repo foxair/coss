@@ -5,13 +5,12 @@
 <html> 
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <title>Portal Layout Sample</title> 
-	<@res.ext />
-	<link rel="stylesheet" type="text/css" href="${app_context}/res/script/ext/portal/portal.css" /> 
+    <title>MVC index</title> 
+	<link rel="stylesheet" type="text/css" href="/res/script/ext/portal/portal.css" /> 
     <script type="text/javascript" src="res/script/ext/portal/portal.js"></script> 
     <script type="text/javascript" src="res/script/app/index.js"></script> 
-</head> 
+</head>
 <body> 
-    <span id="app-msg" style="display:none;"></span> 
+    mvc ${msg!""}
 </body> 
 </html>

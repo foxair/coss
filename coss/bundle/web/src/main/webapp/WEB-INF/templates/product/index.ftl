@@ -8,7 +8,7 @@
 <body class="easyui-layout"> 
 	<div region="north" style="height:40px; overflow: hidden;">
 		<div class="wb-header">
-			<div class="wb-logo"><img src="/res/image/app/gmclogo.gif" /></div>
+			<div class="wb-logo"><img src="/res/image/app/binq.gif" /></div>
 			<div class="nav-drop-menu" style="width:600px;">
 				<a href="javascript:void(0)" class="easyui-linkbutton" plain="true">首 页</a>
 			    <a href="javascript:void(0)" class="easyui-menubutton" menu="#mm1" icon="icon-edit">商品</a>
