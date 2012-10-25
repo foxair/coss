@@ -16,7 +16,7 @@
 	<group name="coss.db">
 		<property name="coss.biz.db.mysql.driver" defaultValue="com.alibaba.druid.proxy.DruidDriver" />
 		<property name="coss.biz.db.mysql.jdbcUrl" defaultValue="jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8" />
-		<property name="coss.biz.db.mysql.name" defaultValue="root" />
+		<property name="coss.biz.db.mysql.username" defaultValue="root" />
 		<property name="coss.biz.db.mysql.password" defaultValue="myroot" />
 		<property name="coss.biz.db.pool.initialPoolSize" defaultValue="10" />
 		<property name="coss.biz.db.pool.minPoolSize" defaultValue="10" />
