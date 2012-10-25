@@ -263,14 +263,23 @@ public class IOUtils {
     }
 
     public static void saveFile(File file, String content, String encoding, boolean append) {
+        FileOutputStream output = null;
         try {
-            FileOutputStream output = new FileOutputStream(file, append);
+            output = new FileOutputStream(file, append);
             Writer writer = StringUtils.isBlank(encoding) ? new OutputStreamWriter(output)
                     : new OutputStreamWriter(output, encoding);
             writer.write(content);
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                if (output != null) {
+                    output.close();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
