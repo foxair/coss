@@ -31,7 +31,6 @@
 		<module>web/home</module>
 		<module>bundle/web</module>
 		<module>deploy</module>
-		<module>tool/generator</module>
 	</modules>
 
 	<properties>
