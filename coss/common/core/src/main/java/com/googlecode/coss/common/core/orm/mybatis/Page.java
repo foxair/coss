@@ -136,7 +136,11 @@ public class Page<T> implements Serializable, Iterable<T> {
      * @return 下一页编码
      */
     public int getNextPageNumber() {
-        return getThisPageNumber() + 1;
+        int p = getThisPageNumber() + 1;
+        if (p > getLastPageNumber()) {
+            p = getLastPageNumber();
+        }
+        return p;
     }
 
     /**
@@ -145,7 +149,11 @@ public class Page<T> implements Serializable, Iterable<T> {
      * @return 上一页编码
      */
     public int getPreviousPageNumber() {
-        return getThisPageNumber() - 1;
+        int p = getThisPageNumber() - 1;
+        if (p < 1) {
+            p = 1;
+        }
+        return p;
     }
 
     /**
@@ -172,8 +180,8 @@ public class Page<T> implements Serializable, Iterable<T> {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List<Integer> getLinkPageNumbers() {
-        return PageHelper.generateLinkPageNumbers(getThisPageNumber(), getLastPageNumber(), 10);
+    public List<Integer> getPageNumbers() {
+        return PageHelper.generatePageNumbers(getThisPageNumber(), getLastPageNumber(), 10);
     }
 
     /**
@@ -182,8 +190,8 @@ public class Page<T> implements Serializable, Iterable<T> {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List<Integer> getLinkPageNumbers(int count) {
-        return PageHelper.generateLinkPageNumbers(getThisPageNumber(), getLastPageNumber(), count);
+    public List<Integer> getPageNumbers(int count) {
+        return PageHelper.generatePageNumbers(getThisPageNumber(), getLastPageNumber(), count);
     }
 
     /**

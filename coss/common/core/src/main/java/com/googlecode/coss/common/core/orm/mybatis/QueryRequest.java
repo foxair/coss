@@ -19,31 +19,31 @@ import com.googlecode.coss.common.utils.lang.reflect.ReflectUtils;
  */
 public class QueryRequest<T> implements Serializable {
 
-    private static final long       serialVersionUID    = -3423314447748128137L;
+    private static final long       serialVersionUID   = -3423314447748128137L;
 
     /** 分页参数 - 页码 */
     public static final String      PAGE_INDEX         = "page";
     /** 分页参数 - 每页大小 */
-    public static final String      PAGE_SIZE           = "size";
+    public static final String      PAGE_SIZE          = "size";
     /** 分页参数 - 排序字段 */
-    public static final String      PAGE_SORT_FIELD     = "sort";
+    public static final String      PAGE_SORT_FIELD    = "sort";
     /** 分页参数 - 排序方式: ASC DESC */
-    public static final String      PAGE_ORDER_TYPE     = "order";
+    public static final String      PAGE_ORDER_TYPE    = "order";
 
     /** 分页参数 - 默认页号 */
-    public static final int         PAGE_DEFAULT_INDEX  = 1;
+    public static final int         PAGE_DEFAULT_INDEX = 1;
     /** 分页参数 - 默认分页大小 */
-    public static final int         PAGE_DEFAULT_SIZE   = 10;
+    public static final int         PAGE_DEFAULT_SIZE  = 10;
     /** 分页参数 - 最大分页大小 */
-    public static final int         PAGE_MAX_SIZE       = 1000;
+    public static final int         PAGE_MAX_SIZE      = 1000;
     /** 排序方式 - ASC */
-    public static final String      ORDER_ASC           = " ASC";
+    public static final String      ORDER_ASC          = " ASC";
     /** 排序方式 - DESC */
-    public static final String      ORDER_DESC          = " DESC";
+    public static final String      ORDER_DESC         = " DESC";
 
-    public static final String      POJO_FIELD_MAP      = "FIELD_MAP";
+    public static final String      POJO_FIELD_MAP     = "FIELD_MAP";
 
-    public Map<String, String>      sortParam           = new HashMap<String, String>();
+    public Map<String, String>      sortParam          = new HashMap<String, String>();
     /**
      * 过滤参数
      */
@@ -59,8 +59,8 @@ public class QueryRequest<T> implements Serializable {
      */
     private String                  sortColumns;
     private Map<String, String>     fieldMap;
-    private List<String>            OrdersList          = new ArrayList<String>();
-    private Map<String, Conditions> conditions          = new HashMap<String, Conditions>();
+    private List<String>            OrdersList         = new ArrayList<String>();
+    private Map<String, Conditions> conditions         = new HashMap<String, Conditions>();
 
     public QueryRequest(Map<?, ?> filters) {
         this(PAGE_DEFAULT_INDEX, PAGE_DEFAULT_SIZE, filters);
@@ -102,18 +102,34 @@ public class QueryRequest<T> implements Serializable {
         this(PAGE_DEFAULT_INDEX, PAGE_DEFAULT_SIZE, filters, fieldMap);
     }
 
-    public QueryRequest(int pageIndex, int pageSize, Object filters) {
-        this(pageIndex, pageSize, filters, "");
+    public QueryRequest(Integer pageIndex, Integer pageSize, Object filters) {
+        if (pageIndex == null) {
+            pageIndex = PAGE_DEFAULT_INDEX;
+        }
+        if (pageSize == null) {
+            pageSize = PAGE_DEFAULT_SIZE;
+        }
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        setFilters(filters);
+        setSortColumns("");
     }
-    
-    public QueryRequest(int pageIndex, int pageSize, Object filters, String sortColumns) {
+
+    public QueryRequest(Integer pageIndex, Integer pageSize, Object filters, String sortColumns) {
+        if (pageIndex == null) {
+            pageIndex = PAGE_DEFAULT_INDEX;
+        }
+        if (pageSize == null) {
+            pageSize = PAGE_DEFAULT_SIZE;
+        }
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
         setFilters(filters);
         setSortColumns(sortColumns);
     }
 
-    public QueryRequest(int pageIndex, int pageSize, Object filters, Map<String, String> fieldMap) {
+    public QueryRequest(Integer pageIndex, Integer pageSize, Object filters,
+                        Map<String, String> fieldMap) {
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
         setFilters(filters);

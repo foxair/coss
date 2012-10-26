@@ -16,7 +16,7 @@ public class PageHelper {
     }
 
     @SuppressWarnings("rawtypes")
-    public static List generateLinkPageNumbers(int currentPageNumber, int lastPageNumber, int count) {
+    public static List generatePageNumbers(int currentPageNumber, int lastPageNumber, int count) {
         int avg = count / 2;
         int startPageNumber = currentPageNumber - avg;
         if (startPageNumber <= 0)

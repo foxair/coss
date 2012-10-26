@@ -76,7 +76,7 @@
 	        product_name = #{productName} ,
 	        retail_price = #{retailPrice} ,
 	        sku_definition = #{skuDefinition} ,
-	        remark = #{remark} 
+	        remark = #{remark}
         WHERE 
 	        id = #{id} 
     ]]>
