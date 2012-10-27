@@ -55,6 +55,27 @@ public abstract class BaseSqlMapDao<T> extends SqlSessionDaoSupport implements S
         return sqlSessionTemplate;
     }
 
+    public int deleteById(Serializable id) {
+        return getSqlSession().delete(getDeleteStatement(), id);
+    }
+
+    public int deleteByIds(Serializable[] ids) {
+        if (ids != null && ids.length != 0)
+            return getSqlSession().delete(getDeleteIdsStatement(), ids);
+        else
+            return 0;
+    }
+
+    public int save(T entity) {
+        prepareObjectForSaveOrUpdate(entity);
+        return getSqlSession().insert(getInsertStatement(), entity);
+    }
+
+    public int update(T entity) {
+        prepareObjectForSaveOrUpdate(entity);
+        return getSqlSession().update(getUpdateStatement(), entity);
+    }
+
     @SuppressWarnings("unchecked")
     public T getById(Serializable id) {
         T object = (T) getSqlSession().selectOne(getFindByPrimaryKeyStatement(), id);
@@ -72,25 +93,6 @@ public abstract class BaseSqlMapDao<T> extends SqlSessionDaoSupport implements S
 
     public Long getCount(Object filters) {
         return (Long) getSqlSession().selectOne(getCountStatement(), filters);
-    }
-
-    public void deleteById(Serializable id) {
-        getSqlSession().delete(getDeleteStatement(), id);
-    }
-
-    public void deleteByIds(Serializable[] ids) {
-        if (ids != null && ids.length != 0)
-            getSqlSession().delete(getDeleteIdsStatement(), ids);
-    }
-
-    public void save(T entity) {
-        prepareObjectForSaveOrUpdate(entity);
-        getSqlSession().insert(getInsertStatement(), entity);
-    }
-
-    public void update(T entity) {
-        prepareObjectForSaveOrUpdate(entity);
-        getSqlSession().update(getUpdateStatement(), entity);
     }
 
     public List<T> findAll(String... sortConditions) {

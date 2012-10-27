@@ -22,7 +22,7 @@
 
 	<!-- 数据库配置 [用户, 密码, url, driver] -->
 	<entry key="jdbc.username">root</entry>
-	<entry key="jdbc.password"></entry>
+	<entry key="jdbc.password">myroot</entry>
 	
 	<entry key="jdbc.url">jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8</entry>
 	<entry key="jdbc.driver">com.mysql.jdbc.Driver</entry>

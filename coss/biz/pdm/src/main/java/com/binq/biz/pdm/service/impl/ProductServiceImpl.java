@@ -22,27 +22,27 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
     @Resource
     private ProductDao productDao;
 
-    public void save(Product product) {
-        productDao.save(product);
+    public int save(Product product) {
+        return productDao.save(product);
     }
 
-    public void update(Product product) {
-        productDao.update(product);
+    public int update(Product product) {
+        return productDao.update(product);
     }
 
-    public void saveOrUpdate(Product product) {
+    public int saveOrUpdate(Product product) {
         if (product.getId() == null)
-            save(product);
+            return save(product);
         else
-            update(product);
+            return update(product);
     }
 
-    public void deleteById(Serializable id) {
-        productDao.deleteById(id);
+    public int deleteById(Serializable id) {
+        return productDao.deleteById(id);
     }
 
-    public void deleteByIds(List<Serializable> ids) {
-        productDao.deleteByIds(ids);
+    public int deleteByIds(List<Serializable> ids) {
+        return productDao.deleteByIds(ids);
     }
 
     public Product getById(Serializable id) {

@@ -14,6 +14,28 @@ import com.googlecode.coss.common.core.orm.mybatis.SqlMapDao;
 public abstract class BaseService<T> {
 
     protected abstract SqlMapDao<T> getSqlMapDao();
+    
+    /** 插入数据 */
+    protected int save(T entity) throws DataAccessException {
+        return getSqlMapDao().save(entity);
+    }
+    
+    /** 根据id检查是否插入或是更新数据 */
+    protected int saveOrUpdate(T entity) throws DataAccessException {
+        return getSqlMapDao().saveOrUpdate(entity);
+    }
+
+    protected int removeById(Serializable id) throws DataAccessException {
+        return getSqlMapDao().deleteById(id);
+    }
+
+    protected int removeByIds(Serializable[] ids) throws DataAccessException {
+        return getSqlMapDao().deleteByIds(ids);
+    }
+
+    protected int update(T entity) throws DataAccessException {
+        return getSqlMapDao().update(entity);
+    }
 
     @Transactional(readOnly = true)
     protected T getById(Serializable id) throws DataAccessException {
@@ -23,28 +45,6 @@ public abstract class BaseService<T> {
     @Transactional(readOnly = true)
     protected List<T> findAll() throws DataAccessException {
         return (List<T>) getSqlMapDao().findAll();
-    }
-
-    /** 根据id检查是否插入或是更新数据 */
-    protected void saveOrUpdate(T entity) throws DataAccessException {
-        getSqlMapDao().saveOrUpdate(entity);
-    }
-
-    /** 插入数据 */
-    protected void save(T entity) throws DataAccessException {
-        getSqlMapDao().save(entity);
-    }
-
-    protected void removeById(Serializable id) throws DataAccessException {
-        getSqlMapDao().deleteById(id);
-    }
-
-    protected void removeByIds(Serializable[] ids) throws DataAccessException {
-        getSqlMapDao().deleteByIds(ids);
-    }
-
-    protected void update(T entity) throws DataAccessException {
-        getSqlMapDao().update(entity);
     }
 
     @Transactional(readOnly = true)

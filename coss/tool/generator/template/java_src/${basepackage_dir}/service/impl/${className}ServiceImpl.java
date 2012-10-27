@@ -24,27 +24,27 @@ public class ${className}ServiceImpl extends BaseService<${className}> implement
     @Resource
 	private ${className}Dao ${classNameLower}Dao;
 	
-    public void save(${className} ${classNameLower}) {
-        ${classNameLower}Dao.save(${classNameLower});
+    public int save(${className} ${classNameLower}) {
+        return ${classNameLower}Dao.save(${classNameLower});
     }
 
-    public void update(${className} ${classNameLower}) {
-        ${classNameLower}Dao.update(${classNameLower});
+    public int update(${className} ${classNameLower}) {
+        return ${classNameLower}Dao.update(${classNameLower});
     }
     
-    public void saveOrUpdate(${className} ${classNameLower}) {
+    public int saveOrUpdate(${className} ${classNameLower}) {
         if(${classNameLower}.getId() == null) 
-            save(${classNameLower});
+            return save(${classNameLower});
         else
-            update(${classNameLower});
+            return update(${classNameLower});
     }
     
-    public void deleteById(Serializable id) {
-        ${classNameLower}Dao.deleteById(id);
+    public int deleteById(Serializable id) {
+        return ${classNameLower}Dao.deleteById(id);
     }
     
-    public void deleteByIds(List<Serializable> ids) {
-        ${classNameLower}Dao.deleteByIds(ids);
+    public int deleteByIds(List<Serializable> ids) {
+        return ${classNameLower}Dao.deleteByIds(ids);
     }
 
     public ${className} getById(Serializable id) {

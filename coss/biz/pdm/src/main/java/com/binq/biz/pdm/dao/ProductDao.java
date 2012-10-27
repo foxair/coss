@@ -8,15 +8,15 @@ import com.googlecode.coss.common.core.orm.mybatis.Page;
 
 public interface ProductDao {
 
-    public void save(Product product);
+    public int save(Product product);
 
-    public void update(Product product);
+    public int update(Product product);
 
-    public void saveOrUpdate(Product product);
+    public int saveOrUpdate(Product product);
 
-    public void deleteById(Serializable id);
+    public int deleteById(Serializable id);
 
-    public void deleteByIds(List<Serializable> ids);
+    public int deleteByIds(List<Serializable> ids);
 
     public Product getById(Serializable id);
 

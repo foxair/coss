@@ -23,19 +23,19 @@ public interface SqlMapDao<T> {
     // public T selectOne(String sql, Object param);
 
     /** 根据主键删除持久化对象 */
-    public void deleteById(Serializable id);
+    public int deleteById(Serializable id);
 
     /** 删除此持久化对象 */
-    public void deleteByIds(Serializable[] entity);
+    public int deleteByIds(Serializable[] entity);
 
     /** 持久化此对象 */
-    public void save(T entity);
+    public int save(T entity);
 
     /** 更新持久化此对象 */
-    public void update(T entity);
+    public int update(T entity);
 
     /** 保存或更新持久化对象 */
-    public void saveOrUpdate(T entity);
+    public int saveOrUpdate(T entity);
 
     /** 刷新新持久化此对象状态 */
     public void flush();

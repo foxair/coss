@@ -10,15 +10,15 @@ import ${import_common}.Page;
 
 public interface ${className}Dao {
 
-    public void save(${className} ${classNameLower});
+    public int save(${className} ${classNameLower});
 
-    public void update(${className} ${classNameLower});
+    public int update(${className} ${classNameLower});
     
-    public void saveOrUpdate(${className} ${classNameLower});
+    public int saveOrUpdate(${className} ${classNameLower});
     
-    public void deleteById(Serializable id);
+    public int deleteById(Serializable id);
     
-    public void deleteByIds(List<Serializable> ids);
+    public int deleteByIds(List<Serializable> ids);
 
     public ${className} getById(Serializable id);
     

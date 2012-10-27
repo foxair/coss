@@ -14,27 +14,27 @@ import com.googlecode.coss.common.core.orm.mybatis.QueryRequest;
 @Repository("productDao")
 public class ProductDaoImpl extends BaseSqlMapDao<Product> implements ProductDao {
 
-    public void save(Product product) {
-        getSqlSessionTemplate().insert("product.insert", product);
+    public int save(Product product) {
+        return getSqlSessionTemplate().insert("product.insert", product);
     }
 
-    public void update(Product product) {
-        getSqlSessionTemplate().update("product.update", product);
+    public int update(Product product) {
+        return getSqlSessionTemplate().update("product.update", product);
     }
 
-    public void saveOrUpdate(Product product) {
+    public int saveOrUpdate(Product product) {
         if (product.getId() == null)
-            save(product);
+            return save(product);
         else
-            update(product);
+            return update(product);
     }
 
-    public void deleteById(Serializable id) {
-        getSqlSessionTemplate().delete("product.deleteById", id);
+    public int deleteById(Serializable id) {
+        return getSqlSessionTemplate().delete("product.deleteById", id);
     }
 
-    public void deleteByIds(List<Serializable> ids) {
-        getSqlSessionTemplate().delete("product.deleteByIds", ids);
+    public int deleteByIds(List<Serializable> ids) {
+        return getSqlSessionTemplate().delete("product.deleteByIds", ids);
     }
 
     public Product getById(Serializable id) {

@@ -16,27 +16,27 @@ import ${import_common}.QueryRequest;
 @Repository("${classNameLower}Dao")
 public class ${className}DaoImpl extends BaseSqlMapDao<${className}> implements ${className}Dao{
 	
-    public void save(${className} ${classNameLower}) {
-        getSqlSessionTemplate().insert("${classNameLower}.insert", ${classNameLower});
+    public int save(${className} ${classNameLower}) {
+        return getSqlSessionTemplate().insert("${classNameLower}.insert", ${classNameLower});
     }
 
-    public void update(${className} ${classNameLower}) {
-        getSqlSessionTemplate().update("${classNameLower}.update", ${classNameLower});
+    public int update(${className} ${classNameLower}) {
+        return getSqlSessionTemplate().update("${classNameLower}.update", ${classNameLower});
     }
     
-    public void saveOrUpdate(${className} ${classNameLower}) {
+    public int saveOrUpdate(${className} ${classNameLower}) {
         if(${classNameLower}.getId() == null) 
-            save(${classNameLower});
+            return save(${classNameLower});
         else
-            update(${classNameLower});
+            return update(${classNameLower});
     }
     
-    public void deleteById(Serializable id) {
-        getSqlSessionTemplate().delete("${classNameLower}.deleteById", id);
+    public int deleteById(Serializable id) {
+        return getSqlSessionTemplate().delete("${classNameLower}.deleteById", id);
     }
     
-    public void deleteByIds(List<Serializable> ids) {
-        getSqlSessionTemplate().delete("${classNameLower}.deleteByIds", ids);
+    public int deleteByIds(List<Serializable> ids) {
+        return getSqlSessionTemplate().delete("${classNameLower}.deleteByIds", ids);
     }
 
     public ${className} getById(Serializable id) {
