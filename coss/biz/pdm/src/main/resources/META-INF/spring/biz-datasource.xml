@@ -15,21 +15,25 @@
 	<!-- 使用annotation定义事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
-	<!-- 数据源配置, 使用DBCP数据库连接池 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-		<property name="driverClass" value="${coss.biz.db.mysql.driver}" />
-		<property name="jdbcUrl" value="${coss.biz.db.mysql.jdbcUrl}" />
-		<property name="user" value="${coss.biz.db.mysql.username}"></property>
-		<property name="password" value="${coss.biz.db.mysql.password}"></property>
-		<property name="initialPoolSize" value="${coss.biz.db.pool.initialPoolSize}"></property>
-		<property name="minPoolSize" value="${coss.biz.db.pool.minPoolSize}"></property>
-		<property name="maxPoolSize" value="${coss.biz.db.pool.maxPoolSize}"></property>
-		<property name="checkoutTimeout" value="${coss.biz.db.pool.checkoutTimeout}"></property>
-		<property name="maxIdleTime" value="${coss.biz.db.pool.maxIdleTime}"></property>
-		<property name="idleConnectionTestPeriod" value="${coss.biz.db.pool.idleConnectionTestPeriod}"></property>
-		<property name="acquireIncrement" value="${coss.biz.db.pool.acquireIncrement}"></property>
+	<!-- 数据源配置, 使用Druid数据库连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
+      <!-- 基本属性 url、user、password -->
+      	<!-- <property name="driverClass" value="${coss.biz.db.mysql.driver}" /> -->
+		<property name="url" value="${coss.biz.db.mysql.jdbcUrl}" />
+		<property name="username" value="${coss.biz.db.mysql.username}" />
+		<property name="password" value="${coss.biz.db.mysql.password}" />
+      <!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${coss.biz.db.pool.initialSize}" />
+		<property name="minIdle" value="${coss.biz.db.pool.minIdle}" />
+		<property name="maxActive" value="${coss.biz.db.pool.maxActive}" />
+      <!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${coss.biz.db.pool.maxWait}" />
+      <!-- 打开PSCache，并且指定每个连接上PSCache的大小,如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false -->
+		<property name="poolPreparedStatements" value="false" />
+      <!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="${coss.biz.db.pool.filters}" />
 	</bean>
-	
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="/META-INF/sqlmap/sqlmap-config.xml"></property>

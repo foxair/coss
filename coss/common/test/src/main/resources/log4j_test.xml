@@ -17,12 +17,14 @@
         </layout>
     </appender>
     
+    <filter class="com.alibaba.druid.filter.logging.Slf4jLogFilter"></filter>
+    
     <!-- 添加SQL打印配置 -->
     <logger name="java.sql" additivity="false">
-		<level value="INFO" />
+		<level value="DEBUG" />
 		<appender-ref ref="PROJECT-DEBUG" />
 	</logger>
-  
+	
     <!-- ===================================================================== -->
     <!--  以下是logger的定义                                                   -->
     <!-- ===================================================================== -->

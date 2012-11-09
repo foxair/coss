@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -20,6 +22,8 @@ import com.googlecode.coss.common.core.orm.mybatis.Page;
 @RequestMapping("/product")
 public class ProductController {
 
+    private Logger         logger = LoggerFactory.getLogger(ProductController.class);
+
     @Resource
     private ProductService productService;
 
@@ -29,6 +33,7 @@ public class ProductController {
         ModelMap m = new ModelMap();
         m.addAttribute("page", page);
         m.addAttribute("pageNumbers", page.getPageNumbers());
+        logger.info("一个logger输出:" + m);
         return m;
     }
 

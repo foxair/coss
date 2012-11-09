@@ -1,8 +1,5 @@
 package com.googlecode.coss.common.core.orm.mybatis.dialect;
 
-/**
- * 
- */
 public class MySQLDialect extends Dialect {
 
     public boolean supportsLimitOffset() {

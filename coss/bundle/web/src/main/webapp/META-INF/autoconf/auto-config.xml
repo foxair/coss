@@ -18,14 +18,12 @@
 		<property name="coss.biz.db.mysql.jdbcUrl" defaultValue="jdbc:mysql://localhost:3306/demo?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="coss.biz.db.mysql.username" defaultValue="root" />
 		<property name="coss.biz.db.mysql.password" defaultValue="myroot" />
-		<property name="coss.biz.db.pool.initialPoolSize" defaultValue="10" />
-		<property name="coss.biz.db.pool.minPoolSize" defaultValue="10" />
-		<property name="coss.biz.db.pool.maxPoolSize" defaultValue="50" />
-		<property name="coss.biz.db.pool.checkoutTimeout" defaultValue="5000" />
-		<property name="coss.biz.db.pool.maxIdleTime" defaultValue="1800" />
-		<property name="coss.biz.db.pool.maxActiveTime" defaultValue="30000" />
-		<property name="coss.biz.db.pool.idleConnectionTestPeriod" defaultValue="3000" />
-		<property name="coss.biz.db.pool.acquireIncrement" defaultValue="5" />
+		<property name="coss.biz.db.pool.initialSize" defaultValue="1" />
+		<property name="coss.biz.db.pool.minIdle" defaultValue="1" />
+		<property name="coss.biz.db.pool.maxActive" defaultValue="20" />
+		<property name="coss.biz.db.pool.maxWait" defaultValue="60000" />
+		<property name="coss.biz.db.pool.poolPreparedStatements" defaultValue="true" />
+		<property name="coss.biz.db.pool.filters" defaultValue="stat,slf4j" />
 	</group>
 
 	<group name="coss.web">

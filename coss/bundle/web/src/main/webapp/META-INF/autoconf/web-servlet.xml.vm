@@ -19,6 +19,8 @@
 
 	<!-- ============ 启动Spring MVC的注解功能，完成请求和注解POJO的映射 ============= -->
 	<mvc:annotation-driven />
+	<!--开启验证功能注释-->
+	<!--<mvc:annotation-driven validator="validator"/>-->
 
 	<!--默认解析器-->
 	<!--<mvc:default-servlet-handler />-->

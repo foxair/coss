@@ -36,5 +36,5 @@
 	</bean>
 
 	<!-- ========================= 载入属性文件 ========================= -->
-	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<!-- <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" /> -->
 </beans>
