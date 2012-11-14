@@ -36,6 +36,9 @@ public class ${className}DaoImpl extends BaseSqlMapDao<${className}> implements 
     }
     
     public int deleteByIds(List<Serializable> ids) {
+        if (ids == null || ids.isEmpty()) {
+            return 0;
+        }
         return getSqlSessionTemplate().delete("${classNameLower}.deleteByIds", ids);
     }
 

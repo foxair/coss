@@ -34,6 +34,9 @@ public class ProductDaoImpl extends BaseSqlMapDao<Product> implements ProductDao
     }
 
     public int deleteByIds(List<Serializable> ids) {
+        if (ids == null || ids.isEmpty()) {
+            return 0;
+        }
         return getSqlSessionTemplate().delete("product.deleteByIds", ids);
     }
 
