@@ -10,15 +10,17 @@ import org.apache.log4j.xml.DOMConfigurator;
  */
 public class LogSupport {
 
+    private static final String LOG4J_CONFIG_FILE = "log4j_test.xml";
+
     /**
      * @throws FactoryConfigurationError
      */
     private static void init() throws FactoryConfigurationError {
-        URL url = LogSupport.class.getClassLoader().getResource("log4j_test.xml");
+        URL url = LogSupport.class.getClassLoader().getResource(LOG4J_CONFIG_FILE);
         if (url != null) {
             DOMConfigurator.configure(url);
         } else {
-            System.err.println("not found log4j.xml in classpath");
+            System.err.println("not found " + LOG4J_CONFIG_FILE + " in classpath");
         }
     }
 

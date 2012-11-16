@@ -22,7 +22,7 @@
 		<property name="ignoreResourceNotFound" value="true" />
 		<property name="locations">
 			<list>
-				<value>classpath:/env.properties</value>
+				<value>classpath:/env-test.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -31,7 +31,7 @@
 	<bean id="propertiesProvider" class="com.googlecode.coss.common.core.context.PropertiesProvider" autowire="byName">
 		<property name="locations">
 			<list>
-				<value>classpath:/env.properties</value>
+				<value>classpath:/env-test.properties</value>
 			</list>
 		</property>
 	</bean>

@@ -42,7 +42,6 @@
 		<jackson.version>1.9.9</jackson.version>
 		<aspectj.version>1.7.0</aspectj.version>
 		<cglib.version>2.2.2</cglib.version>
-		<jtester.version>1.1.8</jtester.version>
 		<jdk.version>1.6</jdk.version>
 		<project.version>4.0.3</project.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -242,11 +241,6 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.10</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jtester</groupId>
-				<artifactId>jtester</artifactId>
-				<version>${jtester.version}</version>
 			</dependency>
 			<!-- test END -->
 			<dependency>
@@ -474,11 +468,6 @@
 			<id>code.taobao.org</id>
 			<name>Repository of code.taobao.org</name>
 			<url>http://code.taobao.org/mvn/repository</url>
-		</repository>
-		<repository>
-			<id>jtester-maven</id>
-			<name>JTester</name>
-			<url>http://jtester.googlecode.com/svn/m2/</url>
 		</repository>
 	</repositories>
 
