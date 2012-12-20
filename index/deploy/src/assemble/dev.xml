@@ -1,0 +1,25 @@
+<assembly>
+	<id>dev</id>
+	<formats>
+		<format>dir</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<!--
+		<fileSet>
+			<directory>META-INF</directory>
+			<outputDirectory>META-INF</outputDirectory>
+		</fileSet>
+		-->
+	</fileSets>
+	<dependencySets>
+		<dependencySet>
+			<includes>
+				<include>com.enniu.zhangdan:enniu.bundle.web:war</include>
+			</includes>
+			<useTransitiveDependencies>false</useTransitiveDependencies>
+			<outputFileNameMapping>enniu.web.war</outputFileNameMapping>
+			<unpack>false</unpack>
+		</dependencySet>
+	</dependencySets>
+</assembly>
