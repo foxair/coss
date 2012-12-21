@@ -58,7 +58,7 @@ public class ${className}DaoImpl extends BaseSqlMapDao<${className}> implements 
     }
     
     public Page<${className}> queryPage(Integer pageIndex, Integer sizePerPage, ${className} ${classNameLower}) {
-        QueryRequest<Product> queryRequest = new QueryRequest<Product>(pageIndex, sizePerPage, ${classNameLower});
+        QueryRequest<${className}> queryRequest = new QueryRequest<${className}>(pageIndex, sizePerPage, ${classNameLower});
         return this.findPage(queryRequest);
     }
     

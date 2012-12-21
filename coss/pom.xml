@@ -30,6 +30,7 @@
 		<module>biz/pdm</module>
 		<module>web/home</module>
 		<module>bundle/web</module>
+		<module>tool/generator</module>
 		<module>deploy</module>
 	</modules>
 
