@@ -3,7 +3,6 @@
 .settings
 .classpath
 .springBeans
-.metadata*
 /.metadata
 /output
 *.log
