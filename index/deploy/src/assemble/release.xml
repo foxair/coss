@@ -1,0 +1,23 @@
+<assembly>
+	<id>release</id>
+	<formats>
+		<format>war</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>META-INF</directory>
+			<outputDirectory>META-INF</outputDirectory>
+		</fileSet>
+	</fileSets>
+	<dependencySets>
+		<dependencySet>
+			<includes>
+				<include>com.github.coss:coss.bundle.web:war</include>
+			</includes>
+			<useTransitiveDependencies>true</useTransitiveDependencies>
+			<outputFileNameMapping>coss.web.war</outputFileNameMapping>
+			<unpack>true</unpack>
+		</dependencySet>
+	</dependencySets>
+</assembly>

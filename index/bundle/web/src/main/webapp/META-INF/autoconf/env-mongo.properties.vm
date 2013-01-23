@@ -1,0 +1,15 @@
+#coss-db-mongo
+coss.app.db.mongo.host						= ${coss_app_db_mongo_host}
+coss.app.db.mongo.port						= ${coss_app_db_mongo_port}
+coss.app.db.mongo.dbname					= ${coss_app_db_mongo_dbname}
+coss.app.db.mongo.connectionsPerHost		= ${coss_app_db_mongo_connectionsPerHost}
+coss.app.db.mongo.threadsAllowedToBlock	= ${coss_app_db_mongo_threadsAllowedToBlock}
+coss.app.db.mongo.connectTimeout			= ${coss_app_db_mongo_connectTimeout}
+coss.app.db.mongo.maxWaitTime				= ${coss_app_db_mongo_maxWaitTime}
+coss.app.db.mongo.autoConnectRetry			= ${coss_app_db_mongo_autoConnectRetry}
+coss.app.db.mongo.socketKeepAlive			= ${coss_app_db_mongo_socketKeepAlive}
+coss.app.db.mongo.socketTimeout			= ${coss_app_db_mongo_socketTimeout}
+coss.app.db.mongo.slaveOk					= ${coss_app_db_mongo_slaveOk}
+coss.app.db.mongo.write.number				= ${coss_app_db_mongo_write_number}
+coss.app.db.mongo.write.timeout			= ${coss_app_db_mongo_write_timeout}
+coss.app.db.mongo.write.fsync				= ${coss_app_db_mongo_write_fsync}
