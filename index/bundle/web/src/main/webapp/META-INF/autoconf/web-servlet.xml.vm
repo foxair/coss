@@ -95,17 +95,26 @@
 
 	<!-- ========================= 类型解析设置  默认JSON视图 ========================= -->
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+        <property name="contentNegotiationManager">
+            <bean class="org.springframework.web.accept.ContentNegotiationManager">
+                <constructor-arg>
+                    <bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+                        <constructor-arg>
+                            <map>
+                                <entry key="html" value="text/html" />
+                				<entry key="ftl" value="text/html" />
+                				<entry key="do" value="text/html" />
+                				<entry key="xml" value="application/xml" />
+                				<entry key="json" value="application/json" />
+                            </map>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </property>
 		<property name="ignoreAcceptHeader" value="true" />
 		<property name="defaultContentType" value="text/html" />
-		<property name="mediaTypes">
-			<map>
-				<entry key="html" value="text/html" />
-				<entry key="ftl" value="text/html" />
-				<entry key="do" value="text/html" />
-				<entry key="xml" value="application/xml" />
-				<entry key="json" value="application/json" />
-			</map>
-		</property>
 		<property name="defaultViews">
 			<list>
 				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
