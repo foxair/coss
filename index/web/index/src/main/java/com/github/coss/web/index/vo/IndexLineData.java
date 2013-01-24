@@ -1,10 +1,12 @@
 package com.github.coss.web.index.vo;
 
-public class IndexLineData {
-    private String    name;
-    private Float[][] data;
+import java.util.List;
 
-    public IndexLineData(String name, Float[][] data) {
+public class IndexLineData {
+    private String        name;
+    private List<List<?>> data;
+
+    public IndexLineData(String name, List<List<?>> data) {
         super();
         this.name = name;
         this.data = data;
@@ -18,11 +20,11 @@ public class IndexLineData {
         this.name = name;
     }
 
-    public Float[][] getData() {
+    public List<List<?>> getData() {
         return data;
     }
 
-    public void setData(Float[][] data) {
+    public void setData(List<List<?>> data) {
         this.data = data;
     }
 

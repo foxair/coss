@@ -2,8 +2,8 @@ package com.github.coss.app.index.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -51,7 +51,7 @@ public class IndexDataServiceImpl implements IndexDataService {
 
     public List<IndexData> buildData(List<BillShoppingSheetVo> bssList, Date startTime, Date endTime) {
         List<TimePart> timePartList = DateUtils.splitTimeUnit(startTime, endTime, TimeUnit.DAY, 1);
-        Map<Date, IndexData> dataTemp = new HashMap<Date, IndexData>(timePartList.size());
+        Map<Date, IndexData> dataTemp = new LinkedHashMap<Date, IndexData>(timePartList.size());
         for (TimePart timePart : timePartList) {
             for (BillShoppingSheetVo bss : bssList) {
                 if (DateUtils
