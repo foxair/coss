@@ -2,7 +2,9 @@
 .project
 .settings
 .classpath
-*metadata*
+.springBeans
 /.metadata
-/RemoteSystemsTempFiles
+/output
+*.log
 *.zip
+RemoteSystemsTempFiles
