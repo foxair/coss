@@ -36,8 +36,8 @@ public class DataController {
                                       @RequestParam(value = "end", required = false) Long end) {
         //TODO 将时间段内数据取出,再通过程序处理成段合计
         //?start=1152371895652&end=1262430156522
-        Date startTime = DateUtils.parse("2012-01-01 00:00:00", "yyyy-MM-dd HH:mm:ss");
-        Date endTime = DateUtils.parse("2012-06-15 00:00:00", "yyyy-MM-dd HH:mm:ss");
+        Date startTime = DateUtils.parse("2012-03-01 00:00:00", "yyyy-MM-dd HH:mm:ss");
+        Date endTime = DateUtils.parse("2012-03-15 00:00:00", "yyyy-MM-dd HH:mm:ss");
         List<IndexData> indexDataList = indexDataService
                 .findByBankIdAndDate(0L, startTime, endTime);//统计了bankId为0的数据
         //TODO 以下处理数据成chart控件格式

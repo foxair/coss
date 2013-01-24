@@ -599,12 +599,9 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>springsource</id>
-			<name>SpringSource Repository</name>
-			<url>http://repository.springsource.com/maven/bundles/release</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
+		    <id>springsource-repo</id>
+		    <name>SpringSource Repository</name>
+		    <url>http://repo.springsource.org/release</url>
 		</repository>
 	</repositories>
 	-->
