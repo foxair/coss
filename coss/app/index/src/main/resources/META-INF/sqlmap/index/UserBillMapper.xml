@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userBill">
+
+	<resultMap id="UserBill_RM" type="UserBill">
+		<result property="billId" column="BillID" />
+		<result property="userId" column="UserID" />
+		<result property="mailId" column="MailID" />
+		<result property="billStartDate" column="BillStartDate" />
+		<result property="billDate" column="BillDate" />
+		<result property="nameOnCard" column="NameOnCard" />
+		<result property="paymentDueDate" column="PaymentDueDate" />
+		<result property="creditLimit" column="CreditLimit" />
+		<result property="usdcreditLimit" column="USDCreditLimit" />
+		<result property="newBalance" column="NewBalance" />
+		<result property="usdnewBalance" column="USDNewBalance" />
+		<result property="minPayment" column="MinPayment" />
+		<result property="usdminPayment" column="USDMinPayment" />
+		<result property="pastDueAmount" column="PastDueAmount" />
+		<result property="usdpastDueAmount" column="USDPastDueAmount" />
+		<result property="cashLimit" column="CashLimit" />
+		<result property="usdcashLimit" column="USDCashLimit" />
+		<result property="cashAmount" column="CashAmount" />
+		<result property="usdcashAmount" column="USDCashAmount" />
+		<result property="lastBalance" column="LastBalance" />
+		<result property="usdlastBalance" column="USDLastBalance" />
+		<result property="lastPayment" column="LastPayment" />
+		<result property="usdlastPayment" column="USDLastPayment" />
+		<result property="newCharges" column="NewCharges" />
+		<result property="usdnewCharges" column="USDNewCharges" />
+		<result property="adjustment" column="Adjustment" />
+		<result property="usdadjustment" column="USDAdjustment" />
+		<result property="interest" column="Interest" />
+		<result property="usdinterest" column="USDInterest" />
+		<result property="integral" column="Integral" />
+		<result property="lastIntegral" column="lastIntegral" />
+		<result property="integralAdd" column="IntegralAdd" />
+		<result property="integralAdjust" column="IntegralAdjust" />
+		<result property="integralReward" column="IntegralReward" />
+		<result property="integralUsed" column="IntegralUsed" />
+		<result property="integralTravel" column="IntegralTravel" />
+		<result property="failureintegral" column="Failureintegral" />
+		<result property="integralLoseDate" column="IntegralLoseDate" />
+		<result property="integralValidUntil" column="IntegralValidUntil" />
+		<result property="integralValidUntil2" column="IntegralValidUntil2" />
+		<result property="integralValidDate2" column="IntegralValidDate2" />
+		<result property="integralValidUntil3" column="IntegralValidUntil3" />
+		<result property="integralValidDate3" column="IntegralValidDate3" />
+		<result property="goldCard" column="GoldCard" />
+		<result property="goldCardValidDate" column="GoldCardValidDate" />
+		<result property="featureIntegralAdd" column="FeatureIntegralAdd" />
+		<result property="featureIntegral" column="FeatureIntegral" />
+		<result property="autoReturnCard" column="AutoReturnCard" />
+		<result property="createTime" column="CreateTime" />
+		<result property="lastModifyTime" column="LastModifyTime" />
+		<result property="bankId" column="BankId" />
+		<result property="isReturn" column="IsReturn" />
+		<result property="integralValidDate" column="IntegralValidDate" />
+		<result property="cardNums" column="CardNums" />
+		<result property="ubid" column="UBId" />
+		<result property="cardNo" column="CardNo" />
+		<result property="mailSender" column="MailSender" />
+		<result property="status" column="Status" />
+		<result property="orgBillDate" column="OrgBillDate" />
+		<result property="orgPaymentDueDate" column="OrgPaymentDueDate" />
+		<result property="returnAmount" column="ReturnAmount" />
+		<result property="gender" column="Gender" />
+	</resultMap>
+
+	<sql id="userBill.columns">
+	    <![CDATA[
+	    	BillID,	UserID,	MailID,	BillStartDate,	BillDate,	NameOnCard,	PaymentDueDate,	CreditLimit,	USDCreditLimit,	NewBalance,	USDNewBalance,	MinPayment,	USDMinPayment,	PastDueAmount,	USDPastDueAmount,	CashLimit,	USDCashLimit,	CashAmount,	USDCashAmount,	LastBalance,	USDLastBalance,	LastPayment,	USDLastPayment,	NewCharges,	USDNewCharges,	Adjustment,	USDAdjustment,	Interest,	USDInterest,	Integral,	lastIntegral,	IntegralAdd,	IntegralAdjust,	IntegralReward,	IntegralUsed,	IntegralTravel,	Failureintegral,	IntegralLoseDate,	IntegralValidUntil,	IntegralValidUntil2,	IntegralValidDate2,	IntegralValidUntil3,	IntegralValidDate3,	GoldCard,	GoldCardValidDate,	FeatureIntegralAdd,	FeatureIntegral,	AutoReturnCard,	CreateTime,	LastModifyTime,	BankId,	IsReturn,	IntegralValidDate,	CardNums,	UBId,	CardNo,	MailSender,	Status,	OrgBillDate,	OrgPaymentDueDate,	ReturnAmount,	Gender
+	    ]]>
+	</sql>
+
+	<sql id="userBill.queryCondition">
+		<if test="billId != null">
+			<![CDATA[ AND BillID = #{billId} ]]>
+		</if>
+		<if test="userId != null">
+			<![CDATA[ AND UserID = #{userId} ]]>
+		</if>
+		<if test="mailId != null">
+			<![CDATA[ AND MailID = #{mailId} ]]>
+		</if>
+		<if test="billStartDate != null">
+			<![CDATA[ AND BillStartDate = #{billStartDate} ]]>
+		</if>
+		<if test="billDate != null">
+			<![CDATA[ AND BillDate = #{billDate} ]]>
+		</if>
+		<if test="nameOnCard != null">
+			<![CDATA[ AND NameOnCard = #{nameOnCard} ]]>
+		</if>
+		<if test="paymentDueDate != null">
+			<![CDATA[ AND PaymentDueDate = #{paymentDueDate} ]]>
+		</if>
+		<if test="creditLimit != null">
+			<![CDATA[ AND CreditLimit = #{creditLimit} ]]>
+		</if>
+		<if test="usdcreditLimit != null">
+			<![CDATA[ AND USDCreditLimit = #{usdcreditLimit} ]]>
+		</if>
+		<if test="newBalance != null">
+			<![CDATA[ AND NewBalance = #{newBalance} ]]>
+		</if>
+		<if test="usdnewBalance != null">
+			<![CDATA[ AND USDNewBalance = #{usdnewBalance} ]]>
+		</if>
+		<if test="minPayment != null">
+			<![CDATA[ AND MinPayment = #{minPayment} ]]>
+		</if>
+		<if test="usdminPayment != null">
+			<![CDATA[ AND USDMinPayment = #{usdminPayment} ]]>
+		</if>
+		<if test="pastDueAmount != null">
+			<![CDATA[ AND PastDueAmount = #{pastDueAmount} ]]>
+		</if>
+		<if test="usdpastDueAmount != null">
+			<![CDATA[ AND USDPastDueAmount = #{usdpastDueAmount} ]]>
+		</if>
+		<if test="cashLimit != null">
+			<![CDATA[ AND CashLimit = #{cashLimit} ]]>
+		</if>
+		<if test="usdcashLimit != null">
+			<![CDATA[ AND USDCashLimit = #{usdcashLimit} ]]>
+		</if>
+		<if test="cashAmount != null">
+			<![CDATA[ AND CashAmount = #{cashAmount} ]]>
+		</if>
+		<if test="usdcashAmount != null">
+			<![CDATA[ AND USDCashAmount = #{usdcashAmount} ]]>
+		</if>
+		<if test="lastBalance != null">
+			<![CDATA[ AND LastBalance = #{lastBalance} ]]>
+		</if>
+		<if test="usdlastBalance != null">
+			<![CDATA[ AND USDLastBalance = #{usdlastBalance} ]]>
+		</if>
+		<if test="lastPayment != null">
+			<![CDATA[ AND LastPayment = #{lastPayment} ]]>
+		</if>
+		<if test="usdlastPayment != null">
+			<![CDATA[ AND USDLastPayment = #{usdlastPayment} ]]>
+		</if>
+		<if test="newCharges != null">
+			<![CDATA[ AND NewCharges = #{newCharges} ]]>
+		</if>
+		<if test="usdnewCharges != null">
+			<![CDATA[ AND USDNewCharges = #{usdnewCharges} ]]>
+		</if>
+		<if test="adjustment != null">
+			<![CDATA[ AND Adjustment = #{adjustment} ]]>
+		</if>
+		<if test="usdadjustment != null">
+			<![CDATA[ AND USDAdjustment = #{usdadjustment} ]]>
+		</if>
+		<if test="interest != null">
+			<![CDATA[ AND Interest = #{interest} ]]>
+		</if>
+		<if test="usdinterest != null">
+			<![CDATA[ AND USDInterest = #{usdinterest} ]]>
+		</if>
+		<if test="integral != null">
+			<![CDATA[ AND Integral = #{integral} ]]>
+		</if>
+		<if test="lastIntegral != null">
+			<![CDATA[ AND lastIntegral = #{lastIntegral} ]]>
+		</if>
+		<if test="integralAdd != null">
+			<![CDATA[ AND IntegralAdd = #{integralAdd} ]]>
+		</if>
+		<if test="integralAdjust != null">
+			<![CDATA[ AND IntegralAdjust = #{integralAdjust} ]]>
+		</if>
+		<if test="integralReward != null">
+			<![CDATA[ AND IntegralReward = #{integralReward} ]]>
+		</if>
+		<if test="integralUsed != null">
+			<![CDATA[ AND IntegralUsed = #{integralUsed} ]]>
+		</if>
+		<if test="integralTravel != null">
+			<![CDATA[ AND IntegralTravel = #{integralTravel} ]]>
+		</if>
+		<if test="failureintegral != null">
+			<![CDATA[ AND Failureintegral = #{failureintegral} ]]>
+		</if>
+		<if test="integralLoseDate != null">
+			<![CDATA[ AND IntegralLoseDate = #{integralLoseDate} ]]>
+		</if>
+		<if test="integralValidUntil != null">
+			<![CDATA[ AND IntegralValidUntil = #{integralValidUntil} ]]>
+		</if>
+		<if test="integralValidUntil2 != null">
+			<![CDATA[ AND IntegralValidUntil2 = #{integralValidUntil2} ]]>
+		</if>
+		<if test="integralValidDate2 != null">
+			<![CDATA[ AND IntegralValidDate2 = #{integralValidDate2} ]]>
+		</if>
+		<if test="integralValidUntil3 != null">
+			<![CDATA[ AND IntegralValidUntil3 = #{integralValidUntil3} ]]>
+		</if>
+		<if test="integralValidDate3 != null">
+			<![CDATA[ AND IntegralValidDate3 = #{integralValidDate3} ]]>
+		</if>
+		<if test="goldCard != null">
+			<![CDATA[ AND GoldCard = #{goldCard} ]]>
+		</if>
+		<if test="goldCardValidDate != null">
+			<![CDATA[ AND GoldCardValidDate = #{goldCardValidDate} ]]>
+		</if>
+		<if test="featureIntegralAdd != null">
+			<![CDATA[ AND FeatureIntegralAdd = #{featureIntegralAdd} ]]>
+		</if>
+		<if test="featureIntegral != null">
+			<![CDATA[ AND FeatureIntegral = #{featureIntegral} ]]>
+		</if>
+		<if test="autoReturnCard != null">
+			<![CDATA[ AND AutoReturnCard = #{autoReturnCard} ]]>
+		</if>
+		<if test="createTime != null">
+			<![CDATA[ AND CreateTime = #{createTime} ]]>
+		</if>
+		<if test="lastModifyTime != null">
+			<![CDATA[ AND LastModifyTime = #{lastModifyTime} ]]>
+		</if>
+		<if test="bankId != null">
+			<![CDATA[ AND BankId = #{bankId} ]]>
+		</if>
+		<if test="isReturn != null">
+			<![CDATA[ AND IsReturn = #{isReturn} ]]>
+		</if>
+		<if test="integralValidDate != null">
+			<![CDATA[ AND IntegralValidDate = #{integralValidDate} ]]>
+		</if>
+		<if test="cardNums != null">
+			<![CDATA[ AND CardNums = #{cardNums} ]]>
+		</if>
+		<if test="ubid != null">
+			<![CDATA[ AND UBId = #{ubid} ]]>
+		</if>
+		<if test="cardNo != null">
+			<![CDATA[ AND CardNo = #{cardNo} ]]>
+		</if>
+		<if test="mailSender != null">
+			<![CDATA[ AND MailSender = #{mailSender} ]]>
+		</if>
+		<if test="status != null">
+			<![CDATA[ AND Status = #{status} ]]>
+		</if>
+		<if test="orgBillDate != null">
+			<![CDATA[ AND OrgBillDate = #{orgBillDate} ]]>
+		</if>
+		<if test="orgPaymentDueDate != null">
+			<![CDATA[ AND OrgPaymentDueDate = #{orgPaymentDueDate} ]]>
+		</if>
+		<if test="returnAmount != null">
+			<![CDATA[ AND ReturnAmount = #{returnAmount} ]]>
+		</if>
+		<if test="gender != null">
+			<![CDATA[ AND Gender = #{gender} ]]>
+		</if>
+	</sql>
+
+	<insert id="userBill.insert" parameterType="UserBill">
+    <![CDATA[
+        INSERT INTO T_User_Bill (
+        	BillID ,
+        	UserID ,
+        	MailID ,
+        	BillStartDate ,
+        	BillDate ,
+        	NameOnCard ,
+        	PaymentDueDate ,
+        	CreditLimit ,
+        	USDCreditLimit ,
+        	NewBalance ,
+        	USDNewBalance ,
+        	MinPayment ,
+        	USDMinPayment ,
+        	PastDueAmount ,
+        	USDPastDueAmount ,
+        	CashLimit ,
+        	USDCashLimit ,
+        	CashAmount ,
+        	USDCashAmount ,
+        	LastBalance ,
+        	USDLastBalance ,
+        	LastPayment ,
+        	USDLastPayment ,
+        	NewCharges ,
+        	USDNewCharges ,
+        	Adjustment ,
+        	USDAdjustment ,
+        	Interest ,
+        	USDInterest ,
+        	Integral ,
+        	lastIntegral ,
+        	IntegralAdd ,
+        	IntegralAdjust ,
+        	IntegralReward ,
+        	IntegralUsed ,
+        	IntegralTravel ,
+        	Failureintegral ,
+        	IntegralLoseDate ,
+        	IntegralValidUntil ,
+        	IntegralValidUntil2 ,
+        	IntegralValidDate2 ,
+        	IntegralValidUntil3 ,
+        	IntegralValidDate3 ,
+        	GoldCard ,
+        	GoldCardValidDate ,
+        	FeatureIntegralAdd ,
+        	FeatureIntegral ,
+        	AutoReturnCard ,
+        	CreateTime ,
+        	LastModifyTime ,
+        	BankId ,
+        	IsReturn ,
+        	IntegralValidDate ,
+        	CardNums ,
+        	UBId ,
+        	CardNo ,
+        	MailSender ,
+        	Status ,
+        	OrgBillDate ,
+        	OrgPaymentDueDate ,
+        	ReturnAmount ,
+        	Gender 
+        ) VALUES (
+        	#{billId} ,
+        	#{userId} ,
+        	#{mailId} ,
+        	#{billStartDate} ,
+        	#{billDate} ,
+        	#{nameOnCard} ,
+        	#{paymentDueDate} ,
+        	#{creditLimit} ,
+        	#{usdcreditLimit} ,
+        	#{newBalance} ,
+        	#{usdnewBalance} ,
+        	#{minPayment} ,
+        	#{usdminPayment} ,
+        	#{pastDueAmount} ,
+        	#{usdpastDueAmount} ,
+        	#{cashLimit} ,
+        	#{usdcashLimit} ,
+        	#{cashAmount} ,
+        	#{usdcashAmount} ,
+        	#{lastBalance} ,
+        	#{usdlastBalance} ,
+        	#{lastPayment} ,
+        	#{usdlastPayment} ,
+        	#{newCharges} ,
+        	#{usdnewCharges} ,
+        	#{adjustment} ,
+        	#{usdadjustment} ,
+        	#{interest} ,
+        	#{usdinterest} ,
+        	#{integral} ,
+        	#{lastIntegral} ,
+        	#{integralAdd} ,
+        	#{integralAdjust} ,
+        	#{integralReward} ,
+        	#{integralUsed} ,
+        	#{integralTravel} ,
+        	#{failureintegral} ,
+        	#{integralLoseDate} ,
+        	#{integralValidUntil} ,
+        	#{integralValidUntil2} ,
+        	#{integralValidDate2} ,
+        	#{integralValidUntil3} ,
+        	#{integralValidDate3} ,
+        	#{goldCard} ,
+        	#{goldCardValidDate} ,
+        	#{featureIntegralAdd} ,
+        	#{featureIntegral} ,
+        	#{autoReturnCard} ,
+        	#{createTime} ,
+        	#{lastModifyTime} ,
+        	#{bankId} ,
+        	#{isReturn} ,
+        	#{integralValidDate} ,
+        	#{cardNums} ,
+        	#{ubid} ,
+        	#{cardNo} ,
+        	#{mailSender} ,
+        	#{status} ,
+        	#{orgBillDate} ,
+        	#{orgPaymentDueDate} ,
+        	#{returnAmount} ,
+        	#{gender} 
+        )
+    ]]>
+		<selectKey keyProperty="billId" resultType="java.lang.Long">
+			SELECT @@IDENTITY AS BillId
+		</selectKey>
+	</insert>
+
+	<update id="userBill.update" parameterType="UserBill">
+    <![CDATA[
+        UPDATE T_User_Bill SET
+	        UserID = #{userId} ,
+	        MailID = #{mailId} ,
+	        BillStartDate = #{billStartDate} ,
+	        BillDate = #{billDate} ,
+	        NameOnCard = #{nameOnCard} ,
+	        PaymentDueDate = #{paymentDueDate} ,
+	        CreditLimit = #{creditLimit} ,
+	        USDCreditLimit = #{usdcreditLimit} ,
+	        NewBalance = #{newBalance} ,
+	        USDNewBalance = #{usdnewBalance} ,
+	        MinPayment = #{minPayment} ,
+	        USDMinPayment = #{usdminPayment} ,
+	        PastDueAmount = #{pastDueAmount} ,
+	        USDPastDueAmount = #{usdpastDueAmount} ,
+	        CashLimit = #{cashLimit} ,
+	        USDCashLimit = #{usdcashLimit} ,
+	        CashAmount = #{cashAmount} ,
+	        USDCashAmount = #{usdcashAmount} ,
+	        LastBalance = #{lastBalance} ,
+	        USDLastBalance = #{usdlastBalance} ,
+	        LastPayment = #{lastPayment} ,
+	        USDLastPayment = #{usdlastPayment} ,
+	        NewCharges = #{newCharges} ,
+	        USDNewCharges = #{usdnewCharges} ,
+	        Adjustment = #{adjustment} ,
+	        USDAdjustment = #{usdadjustment} ,
+	        Interest = #{interest} ,
+	        USDInterest = #{usdinterest} ,
+	        Integral = #{integral} ,
+	        lastIntegral = #{lastIntegral} ,
+	        IntegralAdd = #{integralAdd} ,
+	        IntegralAdjust = #{integralAdjust} ,
+	        IntegralReward = #{integralReward} ,
+	        IntegralUsed = #{integralUsed} ,
+	        IntegralTravel = #{integralTravel} ,
+	        Failureintegral = #{failureintegral} ,
+	        IntegralLoseDate = #{integralLoseDate} ,
+	        IntegralValidUntil = #{integralValidUntil} ,
+	        IntegralValidUntil2 = #{integralValidUntil2} ,
+	        IntegralValidDate2 = #{integralValidDate2} ,
+	        IntegralValidUntil3 = #{integralValidUntil3} ,
+	        IntegralValidDate3 = #{integralValidDate3} ,
+	        GoldCard = #{goldCard} ,
+	        GoldCardValidDate = #{goldCardValidDate} ,
+	        FeatureIntegralAdd = #{featureIntegralAdd} ,
+	        FeatureIntegral = #{featureIntegral} ,
+	        AutoReturnCard = #{autoReturnCard} ,
+	        CreateTime = #{createTime} ,
+	        LastModifyTime = #{lastModifyTime} ,
+	        BankId = #{bankId} ,
+	        IsReturn = #{isReturn} ,
+	        IntegralValidDate = #{integralValidDate} ,
+	        CardNums = #{cardNums} ,
+	        UBId = #{ubid} ,
+	        CardNo = #{cardNo} ,
+	        MailSender = #{mailSender} ,
+	        Status = #{status} ,
+	        OrgBillDate = #{orgBillDate} ,
+	        OrgPaymentDueDate = #{orgPaymentDueDate} ,
+	        ReturnAmount = #{returnAmount} ,
+	        Gender = #{gender} 
+        WHERE 
+	        BillID = #{billId} 
+    ]]>
+	</update>
+
+	<delete id="userBill.deleteById">
+    <![CDATA[
+        DELETE FROM T_User_Bill WHERE
+        BillID = #{billId} 
+    ]]>
+	</delete>
+
+	<delete id="userBill.deleteByIds" parameterType="list">
+	<![CDATA[
+		DELETE FROM T_User_Bill where BillId IN
+	]]>
+		<if test="idList != null">
+			<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</delete>
+
+	<select id="userBill.getById" resultMap="UserBill_RM">
+		SELECT
+		<include refid="userBill.columns" />
+	    <![CDATA[
+		    FROM T_User_Bill WHERE BillId = #{billId}
+	    ]]>
+	</select>
+
+	<select id="userBill.findByIds" parameterType="list" resultMap="UserBill_RM">
+		SELECT
+		<include refid="userBill.columns" />
+	    <![CDATA[
+		    FROM T_User_Bill WHERE BillId IN
+	    ]]>
+		<if test="idList != null">
+			<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+
+	<select id="userBill.getUnique" parameterType="UserBill" resultMap="UserBill_RM">
+		SELECT
+		<include refid="userBill.columns" />
+	    <![CDATA[
+		    FROM T_User_Bill WHERE BillId = #{billId}
+	    ]]>
+	</select>
+
+	<select id="userBill.getCount" parameterType="map" resultType="int">
+		SELECT count(*) FROM T_User_Bill WHERE 1=1
+		<include refid="userBill.queryCondition" />
+	</select>
+
+	<select id="userBill.queryPage" parameterType="map" resultMap="UserBill_RM">
+		SELECT
+		<include refid="userBill.columns" />
+		FROM T_User_Bill WHERE 1=1
+		<include refid="userBill.queryCondition" />
+		ORDER BY BillId desc
+	</select>
+
+	<select id="userBill.find" resultMap="UserBill_RM">
+		SELECT
+		<include refid="userBill.columns" />
+	    <![CDATA[
+		    FROM T_User_Bill WHERE 1=1
+	    ]]>
+		<include refid="userBill.queryCondition" />
+		ORDER BY BillId desc
+	</select>
+
+</mapper>
