@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="billShoppingSheet">
+
+	<resultMap id="BillShoppingSheet_RM" type="BillShoppingSheet">
+		<result property="autoId" column="AutoID" />
+		<result property="billId" column="BillID" />
+		<result property="userId" column="UserID" />
+		<result property="transDate" column="TransDate" />
+		<result property="postDate" column="PostDate" />
+		<result property="discription" column="Discription" />
+		<result property="transType" column="TransType" />
+		<result property="currencytype" column="Currencytype" />
+		<result property="amountMoney" column="AmountMoney" />
+		<result property="transOrgAmount" column="TransOrgAmount" />
+		<result property="transAddr" column="TransAddr" />
+		<result property="createTime" column="CreateTime" />
+		<result property="cardNo" column="CardNo" />
+		<result property="lastModifyTime" column="LastModifyTime" />
+		<result property="bankId" column="BankId" />
+		<result property="categoryId" column="CategoryID" />
+		<result property="keywordId" column="KeywordID" />
+		<result property="tcategoryId" column="TCategoryID" />
+		<result property="tkeywordId" column="TKeywordID" />
+		<result property="tkeywordIds" column="TKeywordIDs" />
+	</resultMap>
+
+	<sql id="billShoppingSheet.columns">
+	    <![CDATA[
+	    	AutoID,	BillID,	UserID,	TransDate,	PostDate,	Discription,	TransType,	Currencytype,	AmountMoney,	TransOrgAmount,	TransAddr,	CreateTime,	CardNo,	LastModifyTime,	BankId,	CategoryID,	KeywordID,	TCategoryID,	TKeywordID,	TKeywordIDs
+	    ]]>
+	</sql>
+
+	<sql id="billShoppingSheet.queryCondition">
+		<if test="autoId != null">
+			<![CDATA[ AND AutoID = #{autoId} ]]>
+		</if>
+		<if test="billId != null">
+			<![CDATA[ AND BillID = #{billId} ]]>
+		</if>
+		<if test="userId != null">
+			<![CDATA[ AND UserID = #{userId} ]]>
+		</if>
+		<if test="transDate != null">
+			<![CDATA[ AND TransDate = #{transDate} ]]>
+		</if>
+		<if test="postDate != null">
+			<![CDATA[ AND PostDate = #{postDate} ]]>
+		</if>
+		<if test="discription != null">
+			<![CDATA[ AND Discription = #{discription} ]]>
+		</if>
+		<if test="transType != null">
+			<![CDATA[ AND TransType = #{transType} ]]>
+		</if>
+		<if test="currencytype != null">
+			<![CDATA[ AND Currencytype = #{currencytype} ]]>
+		</if>
+		<if test="amountMoney != null">
+			<![CDATA[ AND AmountMoney = #{amountMoney} ]]>
+		</if>
+		<if test="transOrgAmount != null">
+			<![CDATA[ AND TransOrgAmount = #{transOrgAmount} ]]>
+		</if>
+		<if test="transAddr != null">
+			<![CDATA[ AND TransAddr = #{transAddr} ]]>
+		</if>
+		<if test="createTime != null">
+			<![CDATA[ AND CreateTime = #{createTime} ]]>
+		</if>
+		<if test="cardNo != null">
+			<![CDATA[ AND CardNo = #{cardNo} ]]>
+		</if>
+		<if test="lastModifyTime != null">
+			<![CDATA[ AND LastModifyTime = #{lastModifyTime} ]]>
+		</if>
+		<if test="bankId != null">
+			<![CDATA[ AND BankId = #{bankId} ]]>
+		</if>
+		<if test="categoryId != null">
+			<![CDATA[ AND CategoryID = #{categoryId} ]]>
+		</if>
+		<if test="keywordId != null">
+			<![CDATA[ AND KeywordID = #{keywordId} ]]>
+		</if>
+		<if test="tcategoryId != null">
+			<![CDATA[ AND TCategoryID = #{tcategoryId} ]]>
+		</if>
+		<if test="tkeywordId != null">
+			<![CDATA[ AND TKeywordID = #{tkeywordId} ]]>
+		</if>
+		<if test="tkeywordIds != null">
+			<![CDATA[ AND TKeywordIDs = #{tkeywordIds} ]]>
+		</if>
+	</sql>
+
+	<sql id="billShoppingSheet.queryConditionGtId">
+		<if test="autoId != null">
+			<![CDATA[ AND AutoID > #{autoId} ]]>
+		</if>
+		<if test="billId != null">
+			<![CDATA[ AND BillID = #{billId} ]]>
+		</if>
+		<if test="userId != null">
+			<![CDATA[ AND UserID = #{userId} ]]>
+		</if>
+		<if test="transDate != null">
+			<![CDATA[ AND TransDate = #{transDate} ]]>
+		</if>
+		<if test="postDate != null">
+			<![CDATA[ AND PostDate = #{postDate} ]]>
+		</if>
+		<if test="discription != null">
+			<![CDATA[ AND Discription = #{discription} ]]>
+		</if>
+		<if test="transType != null">
+			<![CDATA[ AND TransType = #{transType} ]]>
+		</if>
+		<if test="currencytype != null">
+			<![CDATA[ AND Currencytype = #{currencytype} ]]>
+		</if>
+		<if test="amountMoney != null">
+			<![CDATA[ AND AmountMoney = #{amountMoney} ]]>
+		</if>
+		<if test="transOrgAmount != null">
+			<![CDATA[ AND TransOrgAmount = #{transOrgAmount} ]]>
+		</if>
+		<if test="transAddr != null">
+			<![CDATA[ AND TransAddr = #{transAddr} ]]>
+		</if>
+		<if test="createTime != null">
+			<![CDATA[ AND CreateTime = #{createTime} ]]>
+		</if>
+		<if test="cardNo != null">
+			<![CDATA[ AND CardNo = #{cardNo} ]]>
+		</if>
+		<if test="lastModifyTime != null">
+			<![CDATA[ AND LastModifyTime = #{lastModifyTime} ]]>
+		</if>
+		<if test="bankId != null">
+			<![CDATA[ AND BankId = #{bankId} ]]>
+		</if>
+		<if test="categoryId != null">
+			<![CDATA[ AND CategoryID = #{categoryId} ]]>
+		</if>
+		<if test="keywordId != null">
+			<![CDATA[ AND KeywordID = #{keywordId} ]]>
+		</if>
+		<if test="tcategoryId != null">
+			<![CDATA[ AND TCategoryID = #{tcategoryId} ]]>
+		</if>
+		<if test="tkeywordId != null">
+			<![CDATA[ AND TKeywordID = #{tkeywordId} ]]>
+		</if>
+		<if test="tkeywordIds != null">
+			<![CDATA[ AND TKeywordIDs = #{tkeywordIds} ]]>
+		</if>
+	</sql>
+
+	<insert id="billShoppingSheet.insert" parameterType="BillShoppingSheet">
+    <![CDATA[
+        INSERT INTO T_Bill_ShoppingSheet (
+        	AutoID ,
+        	BillID ,
+        	UserID ,
+        	TransDate ,
+        	PostDate ,
+        	Discription ,
+        	TransType ,
+        	Currencytype ,
+        	AmountMoney ,
+        	TransOrgAmount ,
+        	TransAddr ,
+        	CreateTime ,
+        	CardNo ,
+        	LastModifyTime ,
+        	BankId ,
+        	CategoryID ,
+        	KeywordID ,
+        	TCategoryID ,
+        	TKeywordID ,
+        	TKeywordIDs 
+        ) VALUES (
+        	#{autoId} ,
+        	#{billId} ,
+        	#{userId} ,
+        	#{transDate} ,
+        	#{postDate} ,
+        	#{discription} ,
+        	#{transType} ,
+        	#{currencytype} ,
+        	#{amountMoney} ,
+        	#{transOrgAmount} ,
+        	#{transAddr} ,
+        	#{createTime} ,
+        	#{cardNo} ,
+        	#{lastModifyTime} ,
+        	#{bankId} ,
+        	#{categoryId} ,
+        	#{keywordId} ,
+        	#{tcategoryId} ,
+        	#{tkeywordId} ,
+        	#{tkeywordIds} 
+        )
+    ]]>
+		<selectKey keyProperty="autoId" resultType="java.lang.Long">
+			SELECT @@IDENTITY AS AutoID
+		</selectKey>
+	</insert>
+
+	<update id="billShoppingSheet.update" parameterType="BillShoppingSheet">
+    <![CDATA[
+        UPDATE T_Bill_ShoppingSheet SET
+	        BillID = #{billId} ,
+	        UserID = #{userId} ,
+	        TransDate = #{transDate} ,
+	        PostDate = #{postDate} ,
+	        Discription = #{discription} ,
+	        TransType = #{transType} ,
+	        Currencytype = #{currencytype} ,
+	        AmountMoney = #{amountMoney} ,
+	        TransOrgAmount = #{transOrgAmount} ,
+	        TransAddr = #{transAddr} ,
+	        CreateTime = #{createTime} ,
+	        CardNo = #{cardNo} ,
+	        LastModifyTime = #{lastModifyTime} ,
+	        BankId = #{bankId} ,
+	        CategoryID = #{categoryId} ,
+	        KeywordID = #{keywordId} ,
+	        TCategoryID = #{tcategoryId} ,
+	        TKeywordID = #{tkeywordId} ,
+	        TKeywordIDs = #{tkeywordIds} 
+        WHERE 
+	        AutoID = #{autoId} 
+    ]]>
+	</update>
+
+	<delete id="billShoppingSheet.deleteById">
+    <![CDATA[
+        DELETE FROM T_Bill_ShoppingSheet WHERE
+        AutoID = #{autoId} 
+    ]]>
+	</delete>
+
+	<delete id="billShoppingSheet.deleteByIds" parameterType="list">
+	<![CDATA[
+		DELETE FROM T_Bill_ShoppingSheet where AutoID IN
+	]]>
+		<if test="idList != null">
+			<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</delete>
+
+	<select id="billShoppingSheet.getById" resultMap="BillShoppingSheet_RM">
+		SELECT
+		<include refid="billShoppingSheet.columns" />
+	    <![CDATA[
+		    FROM T_Bill_ShoppingSheet WHERE AutoID = #{autoId}
+	    ]]>
+	</select>
+
+	<select id="billShoppingSheet.findByIds" parameterType="list" resultMap="BillShoppingSheet_RM">
+		SELECT
+		<include refid="billShoppingSheet.columns" />
+	    <![CDATA[
+		    FROM T_Bill_ShoppingSheet WHERE AutoID IN
+	    ]]>
+		<if test="idList != null">
+			<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</select>
+
+	<select id="billShoppingSheet.find" resultMap="BillShoppingSheet_RM">
+		SELECT
+		<include refid="billShoppingSheet.columns" />
+	    <![CDATA[
+		    FROM T_Bill_ShoppingSheet WHERE 1=1
+	    ]]>
+		<include refid="billShoppingSheet.queryCondition" />
+		ORDER BY AutoID desc
+	</select>
+
+	<select id="billShoppingSheet.getUnique" parameterType="BillShoppingSheet" resultMap="BillShoppingSheet_RM">
+		SELECT
+		<include refid="billShoppingSheet.columns" />
+	    <![CDATA[
+		    FROM T_Bill_ShoppingSheet WHERE AutoID = #{autoId}
+	    ]]>
+	</select>
+
+	<select id="billShoppingSheet.getCount" parameterType="map" resultType="long">
+		SELECT count(*) FROM T_Bill_ShoppingSheet WHERE 1=1
+		<include refid="billShoppingSheet.queryCondition" />
+	</select>
+
+	<select id="billShoppingSheet.queryPage" parameterType="map" resultMap="BillShoppingSheet_RM">
+		SELECT
+		<include refid="billShoppingSheet.columns" />
+		FROM T_Bill_ShoppingSheet WHERE 1=1
+		<include refid="billShoppingSheet.queryCondition" />
+		ORDER BY AutoID desc
+	</select>
+
+	<select id="billShoppingSheet.getCountByTableName" parameterType="map" resultType="long">
+		SELECT count(*) FROM ${tableName} WHERE 1=1
+		<include refid="billShoppingSheet.queryCondition" />
+	</select>
+
+	<select id="billShoppingSheet.queryPageByTableName" parameterType="map" resultMap="BillShoppingSheet_RM">
+		SELECT
+		<include refid="billShoppingSheet.columns" />
+		FROM ${tableName} WHERE 1=1
+		<include refid="billShoppingSheet.queryCondition" />
+		ORDER BY AutoID asc
+	</select>
+
+	<select id="billShoppingSheet.getCountByTableNameGtId" parameterType="map" resultType="long">
+		SELECT count(*) FROM ${tableName} WHERE 1=1
+		<include refid="billShoppingSheet.queryConditionGtId" />
+	</select>
+
+	<select id="billShoppingSheet.queryPageByTableNameGtId" parameterType="map" resultMap="BillShoppingSheet_RM">
+		SELECT
+		<include refid="billShoppingSheet.columns" />
+		FROM ${tableName} WHERE 1=1
+		<include refid="billShoppingSheet.queryConditionGtId" />
+		ORDER BY AutoID asc
+	</select>
+
+</mapper>
